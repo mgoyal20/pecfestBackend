@@ -1,4 +1,5 @@
 import string
+import os
 from flask import Flask, request, jsonify
 import random
 from flask_sqlalchemy import SQLAlchemy
@@ -35,7 +36,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin@127.0.0.1:3306/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mayank:pec_160012@182.50.133.92:3306/pecfest_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -909,4 +910,7 @@ def start_registrations():
 ################################################################
 
 if __name__ == '__main__':
-    app.run(debug=True, host="127.0.0.1", port=8080)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+    # For Local Host ( Over LAN )
+    # app.run(debug=True, host="127.0.0.1", port=8080)
