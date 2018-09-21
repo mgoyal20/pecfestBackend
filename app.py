@@ -1,11 +1,10 @@
 import string
-from flask import Flask, request, jsonify, send_from_directory, send_file
+from flask import Flask, request, jsonify
 import random
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import json
 import base64
-from sqlalchemy import text
 from requests import post
 
 from send_mail import send_mail
@@ -32,8 +31,7 @@ for cat in cats:
 
 ################################################################
 
-# set the project root directory as the static folder, you can set others.
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
 
 CORS(app)
 
@@ -57,81 +55,6 @@ from models.session import Session
 from models.coordinator import Coordinator
 
 
-## static files
-
-@app.route('/static/<path:path>')
-def send_static_files(path):
-    return send_from_directory('build/static', path)
-
-
-@app.route('/Images/<path:path>')
-def send_images(path):
-    return send_from_directory('build/Images', path)
-
-
-@app.route('/Videos/<path:path>')
-def send_videos(path):
-    return send_from_directory('build/Videos', path)
-
-
-@app.route('/team/<path:path>')
-def send_team(path):
-    return send_from_directory('build/Images/team', path)
-
-
-@app.route('/pdfs/<path:path>')
-def send_pdf(path):
-    return send_from_directory('pdfs', path)
-
-
-@app.route('/static/xdeJSnmdAHrbYhAKdNldNASLlfj/<path:path>')
-def send_admins_page(path):
-    return send_from_directory('admins', path)
-
-
-@app.route('/xdeJSnmdAHrbYhAKdNldNASLlfj')
-def send_admins_index_page():
-    return send_file('admins/index.html')
-
-
-@app.route('/')
-@app.route('/register')
-@app.route('/events/<path:path>')
-@app.route('/activities/<path:path>')
-@app.route('/activities')
-@app.route('/team')
-@app.route('/sponsors')
-@app.route('/hospitality')
-@app.route('/pecfest2016')
-def send_index(path=''):
-    return send_file('build/index.html')
-
-
-@app.route('/manifest.json')
-def send_manifest():
-    return send_file('build/manifest.json')
-
-
-@app.route('/asset-manifest.json')
-def send_asset_manifest():
-    return send_file('build/asset-manifest.json')
-
-
-@app.route('/favicon.ico')
-def send_ico():
-    return send_file('build/favicon.ico')
-
-
-@app.route('/service-worker.js')
-def send_service_worker():
-    return send_file('build/service-worker.js')
-
-
-@app.route('/assets/<path:path>')
-def send_brochure(path):
-    return send_from_directory('build/extras/', path)
-
-
 ################################################################
 
 def genPecfestId(name, length=6):
@@ -147,6 +70,7 @@ def genPecfestId(name, length=6):
 
 db.create_all()
 
+
 ################################################################
 #####################EVENT MANAGEMENT###########################
 
@@ -159,15 +83,15 @@ def getCategories():
 # Create event
 @app.route('/v1/event/create', methods=['POST'])
 def createEvent():
-    # session, user = authenticateUser(request)
-    #
-    # if not session:
-    #     return jsonify({'ACK': 'FAILED', 'message': user})
-    #
-    # coordinator = Coordinator.query.filter_by(userId=user.pecfestId).first()
-    #
-    # if not coordinator or coordinator.level > level['COORD']:
-    #     return jsonify({'ACK': 'FAILED', 'message': 'You are not allowed to do this operation'})
+    session, user = authenticateUser(request)
+
+    if not session:
+        return jsonify({'ACK': 'FAILED', 'message': user})
+
+    coordinator = Coordinator.query.filter_by(userId=user.pecfestId).first()
+
+    if not coordinator or coordinator.level > level['COORD']:
+        return jsonify({'ACK': 'FAILED', 'message': 'You are not allowed to do this operation'})
 
     data = request.get_json()
 
