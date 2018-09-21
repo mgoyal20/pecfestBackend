@@ -1,0 +1,159 @@
+[
+    {
+        "parent_category": "Technical",
+        "description": "The best of the brilliant minds will be surfaced and the innovations from the erudite will be discovered. For those crazy after the codes and passionate for the revv of an engine or the speed of a bot, PECFEST calls you to celebrate your zest for all things technical and explore the joy of never-before inventions, right here beyond this link.",
+        "sub_categories": [
+        {
+            "id": 10,
+            "name": "AEROSPACE",
+            "description": ""
+        },
+        {
+            "id": 11,
+            "name": "ASTRONOMY",
+            "description": ""
+        },
+        {
+            "id": 12,
+            "name": "CIRCUITRY",
+            "description": ""
+        },
+        {
+            "id": 13,
+            "name": "CIVIL AND MATERIALS ",
+            "description": ""
+        },
+        {
+            "id": 14,
+            "name": "CIVIL ENGINEERING",
+            "description": ""
+        },
+        {
+            "id": 15,
+            "name": "CODING",
+            "description": ""
+        },
+        {
+            "id": 16,
+            "name": "FUN EVENT",
+            "description": ""
+        },
+        {
+            "id": 17,
+            "name": "MECHANICAL AND DESIGNING",
+            "description": ""
+        },
+        {
+            "id": 18,
+            "name": "Manufacturing and Materials Engineering ",
+            "description": ""
+        },
+        {
+            "id": 19,
+            "name": "ROBOTICS",
+            "description": ""
+        },
+        {
+            "id": 20,
+            "name": "SOLAR ENERGY",
+            "description": ""
+        }]
+    },
+
+    {
+        "parent_category": "Cultural",
+        "description": "The dreamers, the artists and the liberals who maintain the merry spirits of the world; your energy will find a medium, your imagination- its reality, and your talent- a thriving purpose, as PECfest brings to you the events to surpass your own magic. Here you’ll find your fascinating challenges and the rules to go by.",
+        "sub_categories": [
+        {
+            "id": 1,
+            "name": "NATYAMANCH",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/natyamanch.jpg"
+        },
+        {
+            "id": 2,
+            "name": "NRITYAMANCH",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/nrityamanch.jpg"
+        },
+        {
+            "id": 3,
+            "name": "LITERARY ARTS",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/literaryarts.jpg"
+        },
+        {
+            "id": 4,
+            "name": "SPEAKING ARTS",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/speakingarts.jpg"
+        },
+        {
+            "id": 5,
+            "name": "DIGITAL DESIGN ART",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/digitaldesignart.jpg"
+        },
+        {
+            "id": 6,
+            "name": "FINE ARTS",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/finearts.jpg"
+        },
+        {
+            "id": 7,
+            "name": "MUSICAL ARTS",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/musicalarts.jpg"
+        },
+        {
+            "id": 8,
+            "name": "ENTREPRENEURICAL ARTS",
+            "description": "",
+            "backgroundImageUrl": "/Images/cultural/entrepreneuricalarts.jpg"
+        },
+        {
+            "id": 9,
+            "name": "LIFESTYLE AND OTHERS",
+            "description": "",
+            "backgroundImageUrl": ""
+        }
+      ]
+    },
+    {
+        "parent_category": "Lectures",
+        "description": "Sky is the limit. Gain knowledge wherever you go. Dive into the boundless ocean of infnite wisdom and word. These scholars have within them oceans of understanding that is waiting to be grasped and absorbed to the core. This PECFEST we have lined up various lectures on diverse topics from the masters themselves.We believe in honing skills to perfection and congnizance being power. Lectures and information sessions facilitate this in the most accessible and affordable manner.",
+        "sub_categories": [
+            {
+                "id": 1,
+                "name": "The Dark Side of Internet",
+                "date": "28 October, 2017",
+                "description": "Boring aren’t they? Those guest lectures at every event? <br />Well then, let’s change your mind on that; let’s give you an opportunity to know about something you could connect to more. <br />From being a Limca Book Record holder, Security Researcher and TEDx Speaker to being profiled in the book ‘Hacking the Hacker’ and being listed among the Top 10 Ethical Hackers in India by Microsoft Social Forum and Silicon India Magazine, BENILD JOSEPH has done it all. He was also a speaker at The APWG Vienna Symposium on Global Cybersecurity Awareness Messaging at the United Nations. <br /><br />But NO! Don’t worry; he won’t be boring you and elaborating on what you already learn in your computer classes. Rather he’s going to talk about ‘THE DARK SIDE OF THE INTERNET’. So come join us for Benild Joseph’s guest lecture, at PECFEST 2017!",
+                "lecturer": "Benild Joseph",
+                "posterUrl": "/Images/lectures/lecture1.jpg",
+                "venue": "Auditorium",
+                "backgroundImageUrl": "/Images/lectures/previews/benild.jpg"
+            },
+            {
+                "id": 2,
+                "name": "The Dark Side of Internet",
+                "date": "28 October, 2017",
+                "description": "Boring aren’t they? Those guest lectures at every event? <br />Well then, let’s change your mind on that; let’s give you an opportunity to know about something you could connect to more. <br />From being a Limca Book Record holder, Security Researcher and TEDx Speaker to being profiled in the book ‘Hacking the Hacker’ and being listed among the Top 10 Ethical Hackers in India by Microsoft Social Forum and Silicon India Magazine, BENILD JOSEPH has done it all. He was also a speaker at The APWG Vienna Symposium on Global Cybersecurity Awareness Messaging at the United Nations. <br /><br />But NO! Don’t worry; he won’t be boring you and elaborating on what you already learn in your computer classes. Rather he’s going to talk about ‘THE DARK SIDE OF THE INTERNET’. So come join us for Benild Joseph’s guest lecture, at PECFEST 2017!",
+                "lecturer": "Benild Joseph",
+                "posterUrl": "/Images/lectures/lecture1.jpg",
+                "venue": "Auditorium",
+                "backgroundImageUrl": "/Images/lectures/previews/benild.jpg"
+            }
+        ]
+    },
+    {
+        "parent_category": "Workshops",
+        "description": "Coming Soon",
+        "sub_categories": []
+    },
+    {
+        "parent_category": "Shows",
+        "description": "Coming Soon",
+        "sub_categories": []
+    }
+]
