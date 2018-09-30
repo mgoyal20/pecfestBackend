@@ -4,23 +4,13 @@
         "description": "The best of the brilliant minds will be surfaced and the innovations from the erudite will be discovered. For those crazy after the codes and passionate for the revv of an engine or the speed of a bot, PECFEST calls you to celebrate your zest for all things technical and explore the joy of never-before inventions, right here beyond this link.",
         "sub_categories": [
         {
-            "id": 10,
+            "id": 12,
             "name": "AEROSPACE",
             "description": ""
         },
         {
-            "id": 11,
-            "name": "ASTRONOMY",
-            "description": ""
-        },
-        {
-            "id": 12,
-            "name": "CIRCUITRY",
-            "description": ""
-        },
-        {
             "id": 13,
-            "name": "CIVIL AND MATERIALS ",
+            "name": "ASTRONOMY",
             "description": ""
         },
         {
@@ -39,9 +29,9 @@
             "description": ""
         },
         {
-            "id": 17,
-            "name": "MECHANICAL AND DESIGNING",
-            "description": ""
+             "id": 17,
+             "name": "GEOTECHNICAL ENGINEERING",
+             "description": ""
         },
         {
             "id": 18,
@@ -50,24 +40,25 @@
         },
         {
             "id": 19,
-            "name": "ROBOTICS",
+            "name": "Materials Engineering",
             "description": ""
         },
         {
             "id": 20,
-            "name": "SOLAR ENERGY",
+            "name": "MECHANICAL AND DESIGNING",
             "description": ""
         },
         {
-             "id": 21,
-             "name": "GEOTECHNICAL",
-             "description": ""
-        },
-          {
-            "id": 22,
-            "name": "Materials Engineering",
+            "id": 21,
+            "name": "ROBOTICS",
             "description": ""
-          }]
+        },
+        {
+            "id": 22,
+            "name": "SOLAR ENERGY",
+            "description": ""
+        }
+        ]
     },
 
     {
@@ -76,85 +67,65 @@
         "sub_categories": [
         {
             "id": 1,
-            "name": "NATYAMANCH",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/natyamanch.jpg"
+            "name": "Dramatics",
+            "description": ""
         },
         {
             "id": 2,
-            "name": "NRITYAMANCH",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/nrityamanch.jpg"
+            "name": "Dance",
+            "description": ""
         },
         {
             "id": 3,
-            "name": "LITERARY ARTS",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/literaryarts.jpg"
+            "name": "Literary Arts",
+            "description": ""
         },
         {
             "id": 4,
-            "name": "SPEAKING ARTS",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/speakingarts.jpg"
+            "name": "Speaking Arts",
+            "description": ""
         },
         {
             "id": 5,
-            "name": "DIGITAL DESIGN ART",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/digitaldesignart.jpg"
+            "name": "Quizzes",
+            "description": ""
         },
         {
             "id": 6,
-            "name": "FINE ARTS",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/finearts.jpg"
+            "name": "Projection and Design Arts",
+            "description": ""
         },
         {
             "id": 7,
-            "name": "MUSICAL ARTS",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/musicalarts.jpg"
+            "name": "Fine Arts",
+            "description": ""
         },
         {
             "id": 8,
-            "name": "ENTREPRENEURICAL ARTS",
-            "description": "",
-            "backgroundImageUrl": "/Images/cultural/entrepreneuricalarts.jpg"
+            "name": "Music",
+            "description": ""
         },
         {
             "id": 9,
-            "name": "LIFESTYLE AND OTHERS",
-            "description": "",
-            "backgroundImageUrl": ""
+            "name": "Trade Off",
+            "description": ""
+        },
+        {
+            "id": 10,
+            "name": "Motley",
+            "description": ""
+        },
+        {
+            "id": 11,
+            "name": "Fashion Show",
+            "description": ""
         }
       ]
     },
     {
         "parent_category": "Lectures",
-        "description": "Sky is the limit. Gain knowledge wherever you go. Dive into the boundless ocean of infnite wisdom and word. These scholars have within them oceans of understanding that is waiting to be grasped and absorbed to the core. This PECFEST we have lined up various lectures on diverse topics from the masters themselves.We believe in honing skills to perfection and congnizance being power. Lectures and information sessions facilitate this in the most accessible and affordable manner.",
-        "sub_categories": [
-            {
-                "id": 1,
-                "name": "The Dark Side of Internet",
-                "date": "28 October, 2017",
-                "description": "Boring aren’t they? Those guest lectures at every event? <br />Well then, let’s change your mind on that; let’s give you an opportunity to know about something you could connect to more. <br />From being a Limca Book Record holder, Security Researcher and TEDx Speaker to being profiled in the book ‘Hacking the Hacker’ and being listed among the Top 10 Ethical Hackers in India by Microsoft Social Forum and Silicon India Magazine, BENILD JOSEPH has done it all. He was also a speaker at The APWG Vienna Symposium on Global Cybersecurity Awareness Messaging at the United Nations. <br /><br />But NO! Don’t worry; he won’t be boring you and elaborating on what you already learn in your computer classes. Rather he’s going to talk about ‘THE DARK SIDE OF THE INTERNET’. So come join us for Benild Joseph’s guest lecture, at PECFEST 2017!",
-                "lecturer": "Benild Joseph",
-                "posterUrl": "/Images/lectures/lecture1.jpg",
-                "venue": "Auditorium",
-                "backgroundImageUrl": "/Images/lectures/previews/benild.jpg"
-            },
-            {
-                "id": 2,
-                "name": "The Dark Side of Internet",
-                "date": "28 October, 2017",
-                "description": "Boring aren’t they? Those guest lectures at every event? <br />Well then, let’s change your mind on that; let’s give you an opportunity to know about something you could connect to more. <br />From being a Limca Book Record holder, Security Researcher and TEDx Speaker to being profiled in the book ‘Hacking the Hacker’ and being listed among the Top 10 Ethical Hackers in India by Microsoft Social Forum and Silicon India Magazine, BENILD JOSEPH has done it all. He was also a speaker at The APWG Vienna Symposium on Global Cybersecurity Awareness Messaging at the United Nations. <br /><br />But NO! Don’t worry; he won’t be boring you and elaborating on what you already learn in your computer classes. Rather he’s going to talk about ‘THE DARK SIDE OF THE INTERNET’. So come join us for Benild Joseph’s guest lecture, at PECFEST 2017!",
-                "lecturer": "Benild Joseph",
-                "posterUrl": "/Images/lectures/lecture1.jpg",
-                "venue": "Auditorium",
-                "backgroundImageUrl": "/Images/lectures/previews/benild.jpg"
-            }
-        ]
+        "description": "Coming Soon",
+        "sub_categories": []
     },
     {
         "parent_category": "Workshops",
