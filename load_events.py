@@ -1,7 +1,7 @@
 import json
 import requests
 
-with open('events.json', encoding='utf8') as f:
+with open('technical_events.json', encoding='utf8') as f:
 	events = json.load(f)
 	headers = { 'Content-Type': 'application/json' }
 	for event in events:

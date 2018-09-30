@@ -45,7 +45,7 @@
         },
         {
             "id": 18,
-            "name": "Manufacturing and Materials Engineering ",
+            "name": "Manufacturing Engineering",
             "description": ""
         },
         {
@@ -57,7 +57,17 @@
             "id": 20,
             "name": "SOLAR ENERGY",
             "description": ""
-        }]
+        },
+        {
+             "id": 21,
+             "name": "GEOTECHNICAL",
+             "description": ""
+        },
+          {
+            "id": 22,
+            "name": "Materials Engineering",
+            "description": ""
+          }]
     },
 
     {

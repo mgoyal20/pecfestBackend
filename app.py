@@ -17,7 +17,7 @@ level = {
     'ADMIN': '0',
     'COORD': '1',
     'EDITOR': '2',
-    'USER_M': '3',
+    'USERMANAGER': '3',
     'USER': '4'
 }
 
@@ -910,7 +910,12 @@ def start_registrations():
 ################################################################
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # For Digital Ocean
+    app.run(host='0.0.0.0')
+
+    # For Heroku
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)
+
     # For Local Host ( Over LAN )
     # app.run(debug=True, host="127.0.0.1", port=8080)
