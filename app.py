@@ -36,7 +36,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mayank:pec_160012@182.50.133.92:3306/pecfest_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mayank:Pec_160012@localhost:3306/pecfest_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
