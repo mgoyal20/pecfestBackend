@@ -1,6 +1,6 @@
 import string
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import random
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -54,6 +54,12 @@ from models.event_registration import EventRegistration
 from models.sent_sms import SentSMS
 from models.session import Session
 from models.coordinator import Coordinator
+
+
+# Static files
+@app.route('/PDF/<path:path>')
+def send_pdf(path):
+    return send_from_directory('PDF', path)
 
 
 ################################################################
