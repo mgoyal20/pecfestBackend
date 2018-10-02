@@ -375,11 +375,6 @@ def createUser():
     otp = OTPs(mobile=mobile,
                otp=OTP)
 
-    # send otp to the user's mobile number
-    status = sendOTP(name, mobile, email, OTP, pecfestId)
-    if not status:
-        return jsonify({'ACK': 'FAILED', 'message': 'Unable to send OTP.'})
-
     curr_session = db.session
     success = False
     try:
@@ -394,6 +389,10 @@ def createUser():
         curr_session.flush()
 
     if success:
+        # send otp to the user's mobile number
+        status = sendOTP(name, mobile, email, OTP, pecfestId)
+        if not status:
+            return jsonify({'ACK': 'FAILED', 'message': 'Unable to send OTP.'})
         return jsonify({'ACK': 'SUCCESS', 'pecfestId': pecfestId})
     return jsonify({'ACK': 'FAILED'})
 
