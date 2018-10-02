@@ -56,12 +56,6 @@ from models.session import Session
 from models.coordinator import Coordinator
 
 
-# Static files
-@app.route('/PDF/<path:path>')
-def send_pdf(path):
-    return send_from_directory('PDF', path)
-
-
 ################################################################
 
 def genPecfestId(name, length=6):
