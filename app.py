@@ -36,7 +36,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mayank:Pec_160012@localhost:3306/pecfest_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://MAYANK:pvms6972@localhost:3306/pecfest_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -290,6 +290,9 @@ def getAllEvents():
         eventsInfo.append(eventInfo)
 
     return jsonify(eventsInfo)
+
+
+
 
 
 ################################################################
@@ -877,6 +880,65 @@ def registerEvent():
     except Exception as err:
         return jsonify({'ACK': 'FAILED', 'message': 'Some unknown error occurred.'})
 
+@app.route('/v1/event/<string:eventId>/registrations', methods=['GET'])
+def fetchRegistrations(eventId):
+
+    '''if 'Authorization' not in request.headers:
+        return jsonify({'ACK': 'FAILED', 'message': 'Permission denied.'})
+
+    auth = request.headers['Authorization']
+    session = auth.replace('Basic ', '', 1)
+
+    sessionKey = ''
+    try:
+        sessionKey = base64.b64decode(session).decode('utf-8')
+    except Exception as err:
+        print(err)
+        return jsonify({'ACK': 'FAILED', 'message': 'Wrong session.'})'''
+
+    registrationInfo = {}
+    sameTeam = False
+
+    registrations = db.session.query(EventRegistration, User).filter_by(eventId=eventId).join(User, User.pecfestId == EventRegistration.memberId)
+
+    if registrations == None:
+        registrationInfo['ACK'] = 'FAILED'
+        return jsonify(registrationInfo)
+
+
+    registrationInfo['eventId'] = eventId
+    registrationInfo['teams'] = []
+    teamleaderId = ''
+    team = {}
+    for registration in registrations:
+
+        member = {}
+        if registration[0].leaderId != teamleaderId:
+            if team:
+                registrationInfo['teams'].append(team.copy())
+            teamleaderId = registration[0].leaderId
+            team['leaderId'] = teamleaderId
+            team['members'] = []
+        else:
+            sameTeam = True
+        memberId = registration[0].memberId
+        if teamleaderId == memberId:
+            memberName = registration[1].name
+            if not sameTeam:
+                teamleaderName = memberName
+        else:
+            memberName = registration[1].name
+            if not sameTeam:
+                teamleaderName = User.query.filter_by(pecfestId=teamleaderId).first().name
+                team['leaderName'] = teamleaderName
+        member['memberId'] = memberId
+        member['memberName'] = memberName
+        team['members'].append(member)
+    if team:
+        registrationInfo['teams'].append(team)
+    registrationInfo['ACK'] = 'SUCCESS'
+    return jsonify(registrationInfo)
+
 
 ################################################################
 
@@ -894,7 +956,7 @@ def start_regsitrations():
 
 
 @app.route("/v1/close", methods=['POST'])
-def start_registrations():
+def close_registrations():
     global registrations_closed
     json = request.get_json()
 
@@ -910,11 +972,11 @@ def start_registrations():
 
 if __name__ == '__main__':
     # For Digital Ocean
-    app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0')
 
     # For Heroku
     # port = int(os.environ.get('PORT', 5000))
     # app.run(host='0.0.0.0', port=port)
 
     # For Local Host ( Over LAN )
-    # app.run(debug=True, host="127.0.0.1", port=8080)
+    app.run(debug=True, host="127.0.0.1", port=8080)
