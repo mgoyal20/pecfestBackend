@@ -292,6 +292,65 @@ def getAllEvents():
     return jsonify(eventsInfo)
 
 
+@app.route('/v1/event/<string:eventId>/registrations', methods=['GET'])
+def fetchRegistrations(eventId):
+
+    if 'Authorization' not in request.headers:
+        return jsonify({'ACK': 'FAILED', 'message': 'Permission denied.'})
+    auth = request.headers['Authorization']
+    session = auth.replace('Basic ', '', 1)
+    sessionKey = ''
+    try:
+        sessionKey = base64.b64decode(session).decode('utf-8')
+    except Exception as err:
+        print(err)
+        return jsonify({'ACK': 'FAILED', 'message': 'Wrong session.'})
+
+    registrationInfo = {}
+    sameTeam = False
+
+    registrations = db.session.query(EventRegistration, User).filter_by(eventId=eventId).join(User, User.pecfestId == EventRegistration.memberId)
+
+    if registrations == None:
+        registrationInfo['ACK'] = 'FAILED'
+        return jsonify(registrationInfo)
+
+
+    # registrationInfo['eventId'] = eventId
+    registrationInfo['teams'] = []
+    teamleaderId = ''
+    team = {}
+    for registration in registrations:
+
+        member = {}
+        if registration[0].leaderId != teamleaderId:
+            if team:
+                registrationInfo['teams'].append(team.copy())
+                sameTeam = False
+            teamleaderId = registration[0].leaderId
+            team['leaderId'] = teamleaderId
+            team['members'] = []
+        else:
+            sameTeam = True
+        member['memberId'] = registration[0].memberId
+        member['memberName'] = registration[1].name
+        member['memberCollege'] = registration[1].college
+        member['memberEmail'] = registration[1].email
+        member['memberMobile'] = registration[1].mobile
+        if not sameTeam:
+            teamLeader = User.query.filter_by(pecfestId=teamleaderId).first()
+            team['leaderName'] = teamLeader.name
+            team['leaderCollege'] = teamLeader.college
+            team['leaderMobile'] = teamLeader.mobile
+            team['leaderEmail'] = teamLeader.email
+
+        team['members'].append(member)
+    if team:
+        registrationInfo['teams'].append(team)
+    registrationInfo['ACK'] = 'SUCCESS'
+    return jsonify(registrationInfo)
+
+
 ################################################################
 #####################USER INFO##################################
 
@@ -444,19 +503,17 @@ def loginUser():
     if not result:
         return jsonify({'ACK': 'FAILED', 'message': 'Wrong username/password'})
 
-    print(result)
     coordinator, userInfo = result
 
     user_ = userInfo.__dict__
     user_.pop('_sa_instance_state')
-    print(user_)
     user_ = {**user_}
 
     # create a token and save it to the database
     sessionKey = ''.join(random.choice(string.digits) for _ in range(6))
     session = Session(userId=userInfo.pecfestId, sessionKey=sessionKey)
 
-    sessionKey = base64.b64encode(sessionKey.encode('ascii')).decode('utf-8')
+    # sessionKey = base64.b64encode(sessionKey.encode('ascii')).decode('utf-8')
     try:
         db.session.add(session)
         db.session.commit()
@@ -485,7 +542,6 @@ def logoutCoordinator():
 
     result = Session.query.filter_by(sessionKey=sessionKey).first()
 
-    print(result)
     if result:
         try:
             db.session.delete(result)
