@@ -513,7 +513,7 @@ def loginUser():
     sessionKey = ''.join(random.choice(string.digits) for _ in range(6))
     session = Session(userId=userInfo.pecfestId, sessionKey=sessionKey)
 
-    # sessionKey = base64.b64encode(sessionKey.encode('ascii')).decode('utf-8')
+    sessionKey = base64.b64encode(sessionKey.encode('ascii')).decode('utf-8')
     try:
         db.session.add(session)
         db.session.commit()
@@ -536,7 +536,7 @@ def logoutCoordinator():
 
     sessionKey = ''
     try:
-        sessionKey = base64.b64decode(session).decode('utf-8')
+        sessionKey = base64.b64decode(base64.b64decode(session.encode('ascii')).decode('utf-8'))
     except:
         return jsonify({'ACK': 'FAILED', 'message': 'Wrong session.'})
 
