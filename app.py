@@ -38,7 +38,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mayank:Pec_160012@localhost:3306/pecfest_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin@localhost:3306/pecfest_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -1006,7 +1006,7 @@ def sendNotifs():
     headers = {
         'Content-Type': 'application/json',
     }
-    for i in range(0,len(tokens)):
+    for i in range(0, len(tokens)):
         if i % 100 == 0:
             if i != 0:
                 notif_data = json.dumps(notifTokens)
@@ -1015,21 +1015,19 @@ def sendNotifs():
                 except Exception as e:
                     print(e)
                     notifTokens.append({"ACK": "FAILED"})
-                    return jsonify(notifTokens)
                 notifTokens = []
         notif = {}
-        notif["to"] = tokens[i]
+        notif["to"] = tokens[i].token
         notif["body"] = body
         notif["title"] = title
         notifTokens.append(notif)
-        try:
-            response = requests.post(url=expo_api, data=notif_data, headers=headers)
-        except Exception as e:
-            print(e)
-            notifTokens.append({"ACK": "FAILED"})
-            return jsonify(notifTokens)
-
-
+    notif_data = json.dumps(notifTokens)
+    try:
+        response = requests.post(url=expo_api, data=notif_data, headers=headers)
+    except Exception as e:
+        print(e)
+        notifTokens.append({"ACK": "FAILED"})
+        return jsonify(notifTokens)
     return jsonify(notifTokens)
 
 
@@ -1037,11 +1035,11 @@ def sendNotifs():
 
 if __name__ == '__main__':
     # For Digital Ocean
-    app.run(host='0.0.0.0')
+    # app.run(host='0.0.0.0')
 
     # For Heroku
     # port = int(os.environ.get('PORT', 5000))
     # app.run(host='0.0.0.0', port=port)
 
     # For Local Host ( Over LAN )
-    # app.run(debug=True, host="127.0.0.1", port=8080)
+    app.run(debug=True, host="127.0.0.1", port=8080)
