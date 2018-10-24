@@ -1,11 +1,12 @@
 import string
 import os
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 import random
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import json
 import base64
+import requests
 from requests import post
 
 from send_mail import send_mail
@@ -25,6 +26,7 @@ f = open('categories.json', encoding='utf8')
 cats = json.load(f)
 f.close()
 
+expo_api = 'https://exp.host/--/api/v2/push/send'
 categories = dict()
 for cat in cats:
     for subcat in cat['sub_categories']:
@@ -54,6 +56,7 @@ from models.event_registration import EventRegistration
 from models.sent_sms import SentSMS
 from models.session import Session
 from models.coordinator import Coordinator
+from models.notifications import Notifications
 
 
 ################################################################
@@ -960,6 +963,74 @@ def start_registrations():
             return jsonify({'ACK': 'SUCCESS'})
 
     return jsonify({'ACK': 'FAILED'})
+
+
+@app.route("/v1/push-token", methods=['POST'])
+def save_token():
+    data = request.get_json()
+    try:
+        token = data['token']
+    except KeyError as e:
+        return jsonify({'ACK': 'FAILED', 'message': 'Missing ' + e.args[0]})
+
+    notif = Notifications(token=token)
+    curr_session = db.session
+    success = False
+    try:
+        curr_session.add(notif)
+        curr_session.commit()
+        success = True
+    except Exception as err:
+        print(err)
+        curr_session.rollback()
+        curr_session.flush()
+
+    if success:
+        return jsonify({'ACK': 'SUCCESS', 'token': token})
+    return jsonify({'ACK': 'FAILED'})
+
+
+@app.route('/v1/sendNotifs', methods=['POST'])
+def sendNotifs():
+    data = request.get_json()
+    body = data['body'] if "body" in data else ""
+    title = data['title'] if "title" in data else "PECFEST"
+    notifTokens = []
+    tokens = Notifications.query.all()
+
+    if tokens == None:
+        notifTokens.append({"ACK": "FAILED"})
+        return jsonify(notifTokens)
+
+
+    headers = {
+        'Content-Type': 'application/json',
+    }
+    for i in range(0,len(tokens)):
+        if i % 100 == 0:
+            if i != 0:
+                notif_data = json.dumps(notifTokens)
+                try:
+                    response = requests.post(url=expo_api, data=notif_data, headers=headers)
+                except Exception as e:
+                    print(e)
+                    notifTokens.append({"ACK": "FAILED"})
+                    return jsonify(notifTokens)
+                notifTokens = []
+        notif = {}
+        notif["to"] = tokens[i]
+        notif["body"] = body
+        notif["title"] = title
+        notifTokens.append(notif)
+        try:
+            response = requests.post(url=expo_api, data=notif_data, headers=headers)
+        except Exception as e:
+            print(e)
+            notifTokens.append({"ACK": "FAILED"})
+            return jsonify(notifTokens)
+
+
+    return jsonify(notifTokens)
 
 
 ################################################################

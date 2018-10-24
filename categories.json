@@ -122,16 +122,34 @@
         }
       ]
     },
+
     {
         "parent_category": "Lectures",
-        "description": "Coming Soon",
-        "sub_categories": []
+        "description": "Sky is the limit. Gain knowledge wherever you go. Dive into the boundless ocean of infnite wisdom and word. These scholars have within them oceans of understanding that is waiting to be grasped and absorbed to the core. This PECFEST we have lined up various lectures on diverse topics from the masters themselves.We believe in honing skills to perfection and congnizance being power. Lectures and information sessions facilitate this in the most accessible and affordable manner.",
+        "sub_categories": [
+            {
+                "id": 1,
+                "name": "TeamIndus: Taking India to the Moon",
+                "date": "26 October, 2018",
+                "description": "Guruditya Sinha is a Systems Engineer in the Communications department of TeamIndus. Being part of T.I’s journey since 2012, Guru is an Electronics and Communication engineering graduate from SRM University, Chennai. He has worked on the SRMSAT in the past, the first Nanosatellite to be launched by an Indian University. With the focus on ensuring the team is always in contact with the spacecraft during the mission, Guru's key responsibility at TeamIndus includes Lander to Earth Communication, Systems Reliability, and Quality Assurance. As someone who has shared a keynote address at the European Space Agency's 1st Open-Source CubeSat Workshop, he has a special interest in miniaturizing spacecraft communication system and CubeSat systems while ensuring they are reliable at the same time. <br/>https://drive.google.com/file/d/1nikjIBTZUvdAFdAUgsqHQneO5ZiH7BdN/view <br/>This is about them: https://www.youtube.com/watch?v=9G6caCRiJUY",
+                "lecturer": "Guruditya Sinha",
+                "posterUrl": "",
+                "venue": "Auditorium",
+                "backgroundImageUrl": ""
+            },
+            {
+                "id": 2,
+                "name": "Latest Trends in Artificial Intelligence",
+                "date": "27 October, 2018",
+                "description": "360 Digital Transformation is rapidly climbing the rungs of ladder of success by their skilled services in Artificial Intelligence and Data Analytics. Founded in 2016, they are a small yet powerful team of professionals working collectively towards achieving common goal of client satisfaction and delight. They specialize in providing services to handle and manage your data with their logical and statistical approach duly backed up with technological support resulting in reduced chances of arriving at complex risks in your business. Their group of tech savvy intellectuals with an impressive academic background and experience are the reasons which translates into their unabashedly superlative services. <br/><br/>This PECFEST we have Vikas Mittal - CEO, Pankaj Mittal - Head Training & Operations  and Ajay Ohri - Data Scientist at 360 Digital Transformation to enlighten us with  the power and the latest trends in the field of Artificial.",
+                "lecturer": "Vikas Mittal, Pankaj Mittal and Ajay Ohri",
+                "posterUrl": "",
+                "venue": "Auditorium",
+                "backgroundImageUrl": ""
+            }
+        ]
     },
-    {
-        "parent_category": "Workshops",
-        "description": "Coming Soon",
-        "sub_categories": []
-    },
+
     {
         "parent_category": "Shows",
         "description": "Coming Soon",
