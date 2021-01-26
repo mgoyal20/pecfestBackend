@@ -806,14 +806,15 @@ def getUsersEvents(pecfestId):
 			    r.memberId,
 			    u.name as memberName,
 			    r.leaderId,
-			    l.name as leaderName
+			    l.name as leaderName,
+                e.eventType as eventType,
+                e.category as eventCategory
 			from Registration r
 			join Event e on e.eventId = r.eventId
 			join User u on u.pecfestId = r.memberId
 			join User l on l.pecfestId = r.leaderId
 			where leaderId in (select leaderId from Registration where memberId = :memberId)
 		""", {'memberId': pecfestId}).fetchall();
-
     l = []
     j = dict()
     previous = -1
@@ -823,7 +824,7 @@ def getUsersEvents(pecfestId):
             if (count != 0):
                 l.append(j)
             j = dict()
-            j['event'] = {'id': row[0], 'name': row[1]}
+            j['event'] = {'id': row[0], 'name': row[1], 'eventType': row[6], 'category' : row[7]}
             j['leader'] = {'pecfestId': row[4], 'name': row[5]}
             j['members'] = [{'pecfestId': row[2], 'name': row[3]}]
             count = count + 1
